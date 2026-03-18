@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JogoCartas.Core.Models
 {
-    public class Rodada<T>(List<Jogador> jogadores, Baralho<T> baralho) where T : Carta
+    public class Rodada<T>(List<Jogador<T>> jogadores, Baralho<T> baralho) where T : Carta
     {
-        private List<Jogador> _jogadores = jogadores;
+        private List<Jogador<T>> _jogadores = jogadores;
         private Baralho<T> _baralho = baralho;
 
         public void DistribuirCartas(int quantidadePorJogador = 3)
