@@ -14,6 +14,16 @@ namespace JogoCartas.Core.Models
         public StatusPartida Status { get; set; } = StatusPartida.NaoIniciada;
         public List<Jogador<T>> Jogadores { get; init; } = new();
         public Rodada<T>? RodadaAtual { get; set; }
+        public List<Rodada<T>> Rodadas { get; init; } = new();
+
+        public void IniciarRodada(Baralho<T> baralho)
+        {
+            RodadaAtual = new Rodada<T>(Jogadores, baralho);
+        }
+        public void FinalizarRodada()
+        {
+            RodadaAtual = null;
+        }
 
         public PartidaHistorico GerarHistorico(DateTime inicio, DateTime? fim, List<Rodada<T>> rodadas)
         {
