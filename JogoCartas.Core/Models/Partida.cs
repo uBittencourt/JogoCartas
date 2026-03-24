@@ -1,4 +1,5 @@
 ﻿using JogoCartas.Core.Enums;
+using JogoCartas.Core.Records;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,23 @@ namespace JogoCartas.Core.Models
         public StatusPartida Status { get; set; } = StatusPartida.NaoIniciada;
         public List<Jogador<T>> Jogadores { get; init; } = new();
         public Rodada<T>? RodadaAtual { get; set; }
+
+        public PartidaHistorico GerarHistorico(DateTime inicio, DateTime? fim, List<Rodada<T>> rodadas)
+        {
+            return new PartidaHistorico(
+                Id,
+                Status,
+                inicio,
+                fim,
+                Jogadores.Select(j => new JogadorHistorico(
+                    j.Id,
+                    j.Nome
+                )).ToList(),
+                rodadas.Select((r, index) => new RodadaHistorico(
+                    r.Id,
+                    index + 1
+                )).ToList()
+            );
+        }
     }
 }
