@@ -8,6 +8,7 @@ namespace JogoCartas.Core.Models
 {
     public class Rodada<T>(List<Jogador<T>> jogadores, Baralho<T> baralho) where T : Carta
     {
+        public Guid Id { get; init; } = Guid.NewGuid();
         private List<Jogador<T>> _jogadores = jogadores;
         private Baralho<T> _baralho = baralho;
 

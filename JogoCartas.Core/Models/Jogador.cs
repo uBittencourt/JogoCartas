@@ -9,6 +9,7 @@ namespace JogoCartas.Core.Models
 {
     public class Jogador<T>(string nome) where T : Carta
     {
+        public Guid Id { get; init; } = Guid.NewGuid();
         public string Nome { get; set; } = nome;
         public int Pontos { get; private set; } = 0;
         public List<T> Mao { get; private set; } = new List<T>();
