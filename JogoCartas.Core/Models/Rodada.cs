@@ -9,6 +9,7 @@ namespace JogoCartas.Core.Models
     public class Rodada<T>(List<Jogador<T>> jogadores, Baralho<T> baralho) where T : Carta
     {
         public Guid Id { get; init; } = Guid.NewGuid();
+        public Guid? VencedorId { get; private set; }
         private List<Jogador<T>> _jogadores = jogadores;
         private Baralho<T> _baralho = baralho;
 
@@ -24,6 +25,11 @@ namespace JogoCartas.Core.Models
                     jogador.ReceberCarta(cartaSorteada);
                 }
             }
+        }
+
+        public void DefinirVencedor(Guid jogadorId)
+        {
+            VencedorId = jogadorId;
         }
     }
 }

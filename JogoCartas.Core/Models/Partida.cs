@@ -15,6 +15,7 @@ namespace JogoCartas.Core.Models
         public List<Jogador<T>> Jogadores { get; init; } = new();
         public Rodada<T>? RodadaAtual { get; set; }
         public List<Rodada<T>> Rodadas { get; init; } = new();
+        public Guid? VencedorFinalId { get; set; }
 
         public void IniciarRodada(Baralho<T> baralho)
         {
@@ -32,13 +33,12 @@ namespace JogoCartas.Core.Models
                 Status,
                 inicio,
                 fim,
-                Jogadores.Select(j => new JogadorHistorico(
-                    j.Id,
-                    j.Nome
-                )).ToList(),
+                VencedorFinalId,
+                Jogadores.Select(j => new JogadorHistorico(j.Id, j.Nome)).ToList(),
                 rodadas.Select((r, index) => new RodadaHistorico(
                     r.Id,
-                    index + 1
+                    index + 1,
+                    r.VencedorId
                 )).ToList()
             );
         }

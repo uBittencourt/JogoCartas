@@ -8,6 +8,7 @@ namespace JogoCartas.Core.Records
 {
     public readonly record struct RodadaHistorico(
         Guid Id,
-        int Numero
+        int Numero,
+        Guid? VencedorId
     );
 }

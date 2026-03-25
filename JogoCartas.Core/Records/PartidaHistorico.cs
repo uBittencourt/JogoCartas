@@ -12,6 +12,7 @@ namespace JogoCartas.Core.Records
         StatusPartida Status,
         DateTime Inicio,
         DateTime? Fim,
+        Guid? VencedorPartidaId,
         IReadOnlyList<JogadorHistorico> Jogadores,
         IReadOnlyList<RodadaHistorico> Rodadas
     );
